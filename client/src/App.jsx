@@ -1,22 +1,38 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
-import EntriesMain from "../src/components/Entries/EntriesMain.jsx"
-import Tracks from "../src/components/Tracks/Tracks.jsx"
+import { getArtists, getTypes } from "../src/utils/dataGetters"
+import Main from "./components/Entries/Main"
 
-const App = () => {
-  const [mode, setMode] = useState(null)
+import './styles/App.css'
 
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search)
+export default class App extends React.Component {
+  state = {
+    artists: null,
+    types: null
+  }
 
-    const tracksMode = urlParams.get("tracks")
-    setMode(!!tracksMode)
-  }, [])
+  async componentDidMount() {
+    const [artists, types] = await Promise.all([
+      getArtists(),
+      getTypes()
+    ])
 
-  if (mode === null)
-    return "Loading app..."
+    this.setState({
+      artists,
+      types,
+    })
+  }
 
-  return mode ? <Tracks /> : <EntriesMain />;
+  render() {
+    const { artists, types } = this.state
+    if (!artists || !types)
+      return "Loading data..."
+
+    return (
+      <Main
+        artists={artists}
+        types={types}
+      />
+    );
+  }
 }
-
-export default App;

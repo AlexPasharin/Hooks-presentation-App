@@ -3,13 +3,6 @@ import * as cors from 'cors'
 
 import { dbConnection } from "../db"
 
-const successHandler = res => data => res.set("Access-Control-Allow-Origin", "*").json(data)
-
-const errorHandler = (res, message: string) => err => {
-  console.log(err.stack)
-  res.status(500).send(message)
-}
-
 export const setUpRestEndPoints = (app: Express, dBConnection: dbConnection) => {
   app.get('/rest/artists', (_, res) =>
     dBConnection

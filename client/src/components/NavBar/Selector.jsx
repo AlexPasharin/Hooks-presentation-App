@@ -25,10 +25,11 @@ class Selector extends Component {
     return null
   }
 
-  state = ({
+  state = {
     inputValue: "",
-    filteredItems: this.props.items
-  })
+    filteredItems: this.props.items,
+    selectedItemIdx: null
+  }
 
   inputEl = createRef()
   selectedItemEl = createRef(null)
@@ -57,18 +58,7 @@ class Selector extends Component {
   }
 
   onSelect = item => {
-    const { currentItemID } = this.state
-
-    // make a new selection request only if current selected item wouldnt change
-    if (!currentItemID || item.id !== currentItemID) {
-      this.props.onSelect(item)
-    } else {
-      this.setState({
-        showList: false,
-        selectedItemIdx: null
-      })
-    }
-
+    this.props.onSelect(item)
     this.inputEl.current.blur()
   }
 
@@ -146,7 +136,6 @@ class Selector extends Component {
 
   render() {
     const { showList, inputValue, filteredItems, selectedItemIdx, error } = this.state
-    const onlyOneItem = this.props.items.length === 1
 
     return (
       <div
@@ -164,10 +153,9 @@ class Selector extends Component {
           onKeyDown={this.onKeyDown}
           onChange={this.onChange}
           onMouseEnter={this.onInputMouseEnter}
-          disabled={onlyOneItem}
         />
         {
-          showList && !onlyOneItem &&
+          showList &&
           <ul
             className="selector-list"
           >

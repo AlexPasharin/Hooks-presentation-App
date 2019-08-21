@@ -60,30 +60,3 @@ export const groupBy = fieldName => arr => {
   return result
 }
 
-export const map = (obj, f) => {
-  const result = {}
-
-  for (let prop in obj) {
-    if (obj.hasOwnProperty(prop)) {
-      result[prop] = f(obj[prop])
-    }
-  }
-
-  return result
-}
-
-export const values = obj => {
-  const result = []
-
-  for (let prop in obj) {
-    if (obj.hasOwnProperty(prop)) {
-      result.push({
-        prop,
-        value: obj[prop]
-      })
-
-    }
-  }
-
-  return result
-}

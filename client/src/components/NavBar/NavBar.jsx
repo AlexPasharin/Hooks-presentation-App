@@ -3,9 +3,9 @@ import React from 'react'
 import Selector from './Selector'
 import '../../styles/NavBar.css'
 
-const NavBar = ({ artists, selectedArtist, onSelectArtist, types, selectedType, onSelectType, showEntriesFilter, entryFilterText, onChangeEntryFilterText }) => (
+const NavBar = ({ artists, selectedArtist, onSelectArtist, types, selectedType, onSelectType }) => (
   <header className="app-header">
-    <h1 className="app-header__title">Queen Collection</h1>
+    <h1 className="app-header__title">Record Collection</h1>
     <div className="app-header__selectors" >
       {artists &&
         <Selector
@@ -16,15 +16,10 @@ const NavBar = ({ artists, selectedArtist, onSelectArtist, types, selectedType, 
       }
       {types &&
         <Selector
-          key={selectedArtist ? selectedArtist.id : 0}
           items={types}
           selectedItem={selectedType}
           onSelect={onSelectType}
-          name="types"
         />
-      }
-      {showEntriesFilter &&
-        <input className="entries-filter" type="text" placeholder="Filter entries" value={entryFilterText} onChange={onChangeEntryFilterText} />
       }
     </div>
   </header>

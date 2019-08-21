@@ -9,9 +9,9 @@ const prevIndex = (arr, index) =>
 
 const nextIndex = (arr, index) =>
   index === null ? 0 :
-    index === arr.length ? 0 : index + 1
+    index === arr.length - 1 ? 0 : index + 1
 
-const Entries = ({ entries, selectedEntryIdx, onEntrySelect, initialSelectedReleaseID, removeInitialSelectedReleaseID }) => {
+const Entries = ({ entries, selectedEntryIdx, onEntrySelect }) => {
   if (!entries)
     return <div className="entry-list-empty">Loading data...</div>
 
@@ -31,9 +31,6 @@ const Entries = ({ entries, selectedEntryIdx, onEntrySelect, initialSelectedRele
           select={() => onEntrySelect(idx)}
           selectPrevEntry={selectPrevEntry}
           selectNextEntry={selectNextEntry}
-          lastEntry={idx === entries.length - 1}
-          initialSelectedReleaseID={selectedEntryIdx === idx ? initialSelectedReleaseID : null}
-          removeInitialSelectedReleaseID={removeInitialSelectedReleaseID}
         />)
       }
     </ul>

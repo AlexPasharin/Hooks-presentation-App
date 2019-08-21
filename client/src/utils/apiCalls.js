@@ -10,8 +10,11 @@ const fetchData = (resource, method, body, headers) =>
 
 
 export const fetchArtists = () => fetchData('artists')
+export const fetchTypes = () => fetchData('types')
+export const fetchEntries = (artistID, typeID) => fetchData(`entries?artistID=${artistID}&typeID=${typeID}`)
+export const fetchTracks = albumID => fetchData(`tracks?albumID=${albumID}`)
+
 export const fetchArtistTypes = artistID => fetchData(`types?artist=${artistID}`)
-export const fetchEntries = (artistID, type) => fetchData(`entries?artist=${artistID}&type=${type}`)
 export const fetchReleases = entryID => fetchData(`releases?entry=${entryID}`)
 
 export const fetchRelease = releaseID => fetchData(`release?id=${releaseID}`)

@@ -68,73 +68,17 @@ main {
   font-weight: bold;
 }
 
-.release-view {
+.tracks-view {
   background-color: var(--release-block-bg-color);
   padding: 20px 40px;
 }
 
-.release-view ul {
+.tracks-view ul {
   list-style-type: decimal;
   margin: 10px;
 }
 
-.release-view ul li {
+.tracks-view ul li {
   margin: 5px;
 }
-
-.release-view ul li span{
-  margin-left: 5px;
-}
-
-.release-view ul li span:hover, .entry-block-release--selected {
-  display: inline-block;
-  color: blue;
-  cursor: pointer;
-}
-
-.release-block .table-section-name{
-  margin: 10px 0;
-  display: inline-block;
-  font-weight: 600;
-}
-
-
-.release-info-block {
-  line-height: 25px;
-}
-
-.release-discogs-url {
-  display: block;
-  max-width: 500px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.release-details-link {
-  color: blue;
-  text-decoration: underline;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-.add-release-form label {
-  display: flex;
-  margin: 5px 0;
-}
-
-.add-release-form label .add-release-form__title {
-  font-size: 18px;
-  width: 100px;
-}
-
-.add-release-form label .add-release-form__input {
-  font-size: 16px;
-  width: 500px;
-}
-
-.add-release-form label .add-release-form__input--invalid {
-  border-color: red;
-}
-
 
