@@ -21,17 +21,8 @@ export default class Entry extends Component {
     }
   }
 
-  toggleTracksBlock = async () => {
-    if (this.state.open) {
-      this.setState({
-        open: false,
-        releases: null
-      })
-    } else {
-      this.setState({
-        open: true,
-      })
-    }
+  toggleTracksBlock = () => {
+    this.setState(prevState => ({ open: !prevState.open }))
   }
 
   onKeyDown = e => {
