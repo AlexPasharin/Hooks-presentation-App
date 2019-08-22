@@ -7,7 +7,6 @@ import EntryTracks from "./EntryTracks"
 export default class Entry extends Component {
   state = {
     open: false,
-    tracks: null
   }
 
   el = createRef()
@@ -18,10 +17,6 @@ export default class Entry extends Component {
     }
 
     if (!prevState.open && this.state.open) {
-      this.el.current.scrollIntoView()
-    }
-
-    if (!prevState.tracks && this.state.tracks) {
       this.el.current.scrollIntoView()
     }
   }
@@ -91,3 +86,32 @@ export default class Entry extends Component {
     )
   }
 }
+
+const EntryFunc = ({ entry, selected }) => {
+  const [open, setOpen] = useState(false)
+  const { name, release_date, id } = entry
+
+  return (
+    <li
+      tabIndex="0"
+      ref={this.el}
+      className={classList("entry-block", { open, selected }, ["no-focus-outline"])}
+      onKeyDown={this.onKeyDown}
+      onFocus={this.onFocus}
+
+    >
+      <div className="entry-block__details"
+        onClick={this.toggleTracksBlock}
+      >
+        <h2>{name} </h2>
+        <p>
+          <span className="detail__title">Release date: </span>
+          {formatDate(release_date)}
+        </p>
+      </div>
+      {open && <EntryTracks entryID={id} />}
+    </li>
+  )
+}
+
+// export default EntryFunc
