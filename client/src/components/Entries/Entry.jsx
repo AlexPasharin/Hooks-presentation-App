@@ -11,7 +11,6 @@ export default class Entry extends Component {
   }
 
   el = createRef()
-  buttonEl = createRef()
 
   async componentDidUpdate(prevProps, prevState) {
     if (!prevProps.selected && this.props.selected) {
