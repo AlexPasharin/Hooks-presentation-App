@@ -69,7 +69,7 @@ main {
 }
 
 .tracks-view {
-  background-color: var(--release-block-bg-color);
+  background-color: pink;
   padding: 20px 40px;
 }
 

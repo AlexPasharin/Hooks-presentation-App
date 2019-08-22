@@ -45,15 +45,9 @@ export default class EntriesMain extends React.Component {
 
   }
 
-  onEntrySelect = selectedEntryIdx => {
-    this.setState({ selectedEntryIdx })
-  }
-
   render() {
     const { artists, types } = this.props
-
-    const { selectedArtist, selectedType, entries, selectedEntryIdx } = this.state
-    console.log(selectedEntryIdx)
+    const { selectedArtist, selectedType, entries } = this.state
 
     return (
       <div className="main-content">
@@ -68,8 +62,6 @@ export default class EntriesMain extends React.Component {
         <main>
           <Entries
             entries={entries}
-            onEntrySelect={this.onEntrySelect}
-            selectedEntryIdx={selectedEntryIdx}
           />
         </main>
       </div>

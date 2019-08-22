@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import Entry from './Entry'
 import '../../styles/Entries.css'
@@ -11,15 +11,17 @@ const nextIndex = (arr, index) =>
   index === null ? 0 :
     index === arr.length - 1 ? 0 : index + 1
 
-const Entries = ({ entries, selectedEntryIdx, onEntrySelect }) => {
+const Entries = ({ entries }) => {
+  const [selectedEntryIdx, setSelectedEntryIdx] = useState(null)
+
   if (!entries)
     return <div className="entry-list-empty">Loading data...</div>
 
   if (!entries.length)
     return <div className="entry-list-empty">No entries correspond to the search release</div>
 
-  const selectPrevEntry = () => onEntrySelect(prevIndex(entries, selectedEntryIdx))
-  const selectNextEntry = () => onEntrySelect(nextIndex(entries, selectedEntryIdx))
+  const selectPrevEntry = () => setSelectedEntryIdx(prevIndex(entries, selectedEntryIdx))
+  const selectNextEntry = () => setSelectedEntryIdx(nextIndex(entries, selectedEntryIdx))
 
   return (
     <ul>
@@ -28,7 +30,7 @@ const Entries = ({ entries, selectedEntryIdx, onEntrySelect }) => {
           key={e.id}
           entry={e}
           selected={selectedEntryIdx === idx}
-          select={() => onEntrySelect(idx)}
+          select={() => setSelectedEntryIdx(idx)}
           selectPrevEntry={selectPrevEntry}
           selectNextEntry={selectNextEntry}
         />)

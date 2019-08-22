@@ -27,7 +27,6 @@ export default class Entry extends Component {
     }
   }
 
-
   toggleTracksBlock = async () => {
     if (this.state.open) {
       this.setState({
