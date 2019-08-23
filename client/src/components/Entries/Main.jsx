@@ -69,3 +69,10 @@ export default class EntriesMain extends React.Component {
   }
 }
 
+const MainFunc = ({ artists, types }) => {
+
+
+
+}
+
+//export default MainFunc
