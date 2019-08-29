@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useReducer, useState } from 'react'
 
 import Entry from './Entry'
 import '../../styles/Entries.css'
@@ -12,7 +12,15 @@ const nextIndex = (arr, index) =>
     index === arr.length - 1 ? 0 : index + 1
 
 const Entries = ({ entries }) => {
-  const [selectedEntryIdx, setSelectedEntryIdx] = useState(null)
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case 'SET': return action.idx
+      case 'PREV': return prevIndex(entries, state)
+      case 'NEXT': return nextIndex(entries, state)
+    }
+  }
+
+  const [selectedEntryIdx, dispatch] = useReducer(reducer, null)
 
   if (!entries)
     return <div className="entry-list-empty">Loading data...</div>
@@ -20,8 +28,8 @@ const Entries = ({ entries }) => {
   if (!entries.length)
     return <div className="entry-list-empty">No entries correspond to the search release</div>
 
-  const selectPrevEntry = () => setSelectedEntryIdx(prevIndex(entries, selectedEntryIdx))
-  const selectNextEntry = () => setSelectedEntryIdx(nextIndex(entries, selectedEntryIdx))
+  const selectPrevEntry = () => dispatch({ type: 'PREV' })
+  const selectNextEntry = () => dispatch({ type: 'NEXT' })
 
   return (
     <ul>
@@ -30,7 +38,7 @@ const Entries = ({ entries }) => {
           key={e.id}
           entry={e}
           selected={selectedEntryIdx === idx}
-          select={() => setSelectedEntryIdx(idx)}
+          select={() => dispatch({ type: 'SET', idx })}
           selectPrevEntry={selectPrevEntry}
           selectNextEntry={selectNextEntry}
         />)
