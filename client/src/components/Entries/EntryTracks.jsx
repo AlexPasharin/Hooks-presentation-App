@@ -8,6 +8,12 @@ const EntryTracks = ({ entryID }) => {
     getTracks(entryID).then(setTracks)
   }, [])
 
+  useEffect(() => {
+    console.log("Mounting")
+
+    return () => console.log("Unmounting")
+  }, [])
+
   if (!tracks)
     return (
       <p className="tracks-view detail__title"> Loading tracks...</p>
