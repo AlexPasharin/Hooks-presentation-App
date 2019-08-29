@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { getEntries } from "../../utils/dataGetters"
 import NavBar from '../NavBar/NavBar'
 import Entries from './Entries'
 
-export default class EntriesMain extends React.Component {
+//export default
+class EntriesMain extends React.Component {
   state = {
     selectedArtist: null,
     selectedType: null,
@@ -59,11 +60,11 @@ export default class EntriesMain extends React.Component {
           onSelectArtist={this.onSelectArtist}
           onSelectType={this.onSelectType}
         />
-        <main>
+        {/* <main>
           <Entries
             entries={entries}
           />
-        </main>
+        </main> */}
       </div>
     )
   }
@@ -71,8 +72,29 @@ export default class EntriesMain extends React.Component {
 
 const MainFunc = ({ artists, types }) => {
 
+  const [selectedArtist, setSelectedArtist] = useState(null)
+  const [selectedType, setSelectedType] = useState(null)
+
+
+  return (
+    <div className="main-content">
+      <NavBar
+        artists={artists}
+        types={types}
+        selectedArtist={selectedArtist}
+        selectedType={selectedType}
+        onSelectArtist={setSelectedArtist}
+        onSelectType={setSelectedType}
+      />
+      {/* <main>
+        <Entries
+          entries={entries}
+        />
+      </main> */}
+    </div>
+  )
 
 
 }
 
-//export default MainFunc
+export default MainFunc
