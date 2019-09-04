@@ -13,6 +13,3 @@ export const fetchArtists = () => fetchData('artists')
 export const fetchTypes = () => fetchData('types')
 export const fetchEntries = (artistID, typeID) => fetchData(`entries?artistID=${artistID}&typeID=${typeID}`)
 export const fetchTracks = albumID => fetchData(`tracks?albumID=${albumID}`)
-
-export const fetchArtistTypes = artistID => fetchData(`types?artist=${artistID}`)
-export const fetchReleases = entryID => fetchData(`releases?entry=${entryID}`)
