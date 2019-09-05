@@ -1,4 +1,4 @@
-import React, { Component, createRef, useState, useRef, useLayoutEffect } from 'react'
+import React, { useState, useRef, useLayoutEffect } from 'react'
 import { formatDate } from '../../utils/dataHelpers'
 import { classList } from '../../utils/classList'
 
