@@ -4,7 +4,7 @@ import { getEntries } from "../../utils/dataGetters"
 import NavBar from '../NavBar/NavBar'
 import Entries from './Entries'
 
-export default class EntriesMain extends React.Component {
+class EntriesMain extends React.Component {
   state = {
     selectedArtist: null,
     selectedType: null,
@@ -69,10 +69,4 @@ export default class EntriesMain extends React.Component {
   }
 }
 
-const MainFunc = ({ artists, types }) => {
-
-
-
-}
-
-//export default MainFunc
+export default Main

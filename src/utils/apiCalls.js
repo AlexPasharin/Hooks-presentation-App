@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:2000'
+const BASE_URL = "https://stormy-atoll-86367.herokuapp.com"
 
 const fetchData = (resource, method, body, headers) =>
   fetch(`${BASE_URL}/rest/${resource}`, {
@@ -13,6 +13,3 @@ export const fetchArtists = () => fetchData('artists')
 export const fetchTypes = () => fetchData('types')
 export const fetchEntries = (artistID, typeID) => fetchData(`entries?artistID=${artistID}&typeID=${typeID}`)
 export const fetchTracks = albumID => fetchData(`tracks?albumID=${albumID}`)
-
-export const fetchArtistTypes = artistID => fetchData(`types?artist=${artistID}`)
-export const fetchReleases = entryID => fetchData(`releases?entry=${entryID}`)
