@@ -4,7 +4,7 @@ import { getEntries } from "../../utils/dataGetters"
 import NavBar from '../NavBar/NavBar'
 import Entries from './Entries'
 
-//export default
+// This is now (partially) re-implemented as a functional component MainFunc below
 class EntriesMain extends React.Component {
   state = {
     selectedArtist: null,
@@ -60,21 +60,19 @@ class EntriesMain extends React.Component {
           onSelectArtist={this.onSelectArtist}
           onSelectType={this.onSelectType}
         />
-        {/* <main>
+        <main>
           <Entries
             entries={entries}
           />
-        </main> */}
+        </main>
       </div>
     )
   }
 }
 
 const MainFunc = ({ artists, types }) => {
-
   const [selectedArtist, setSelectedArtist] = useState(null)
   const [selectedType, setSelectedType] = useState(null)
-
 
   return (
     <div className="main-content">
@@ -86,15 +84,15 @@ const MainFunc = ({ artists, types }) => {
         onSelectArtist={setSelectedArtist}
         onSelectType={setSelectedType}
       />
-      {/* <main>
+      {/*
+      // Since we do not know how to fetch data in a functional component we do not implement this part yet
+      <main>
         <Entries
           entries={entries}
         />
       </main> */}
     </div>
   )
-
-
 }
 
 export default MainFunc
