@@ -74,7 +74,6 @@ class Main extends React.Component {
   }
 }
 
-
 const MainFunc = ({ artists, types }) => {
   const [selectedArtist, setSelectedArtist] = useState(null)
   const [selectedType, setSelectedType] = useState(null)
@@ -98,7 +97,6 @@ const MainFunc = ({ artists, types }) => {
     [selectedArtist, selectedType]
   )
 
-
   return (
     <div className="main-content">
       <NavBar
@@ -116,8 +114,6 @@ const MainFunc = ({ artists, types }) => {
       </main>
     </div>
   )
-
-
 }
 
 export default MainFunc
