@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:2000'
+const BASE_URL = "https://stormy-atoll-86367.herokuapp.com"
 
 const fetchData = (resource, method, body, headers) =>
   fetch(`${BASE_URL}/rest/${resource}`, {
