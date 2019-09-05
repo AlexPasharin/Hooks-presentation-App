@@ -5,7 +5,7 @@ import NavBar from '../NavBar/NavBar'
 import Entries from './Entries'
 
 // This is now (partially) re-implemented as a functional component MainFunc below
-class EntriesMain extends React.Component {
+class Main extends React.Component {
   state = {
     selectedArtist: null,
     selectedType: null,
