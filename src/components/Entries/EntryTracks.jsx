@@ -8,6 +8,10 @@ const EntryTracks = ({ entryID }) => {
     getTracks(entryID).then(setTracks)
   }, [])
 
+  /*
+    this effect will fire once on mounting (printing "Mounting")
+    and once on unmounting (printing "Unmounting")
+  */
   useEffect(() => {
     console.log("Mounting")
 
